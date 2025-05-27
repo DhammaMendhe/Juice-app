@@ -1,12 +1,40 @@
-# React + Vite
+# 🧃 JuiceDelight – Fresh Juice Ordering Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+JuiceDelight is a full-stack web application where users can browse, customize, and order fresh juice blends. The app supports user authentication, dynamic product filtering, logging, and a modern UI for a seamless user experience.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 **User Authentication** – Signup and login with secure password hashing using bcrypt and JWT-based auth.
+- 🛍️ **Product Browsing** – View juice items with images, descriptions, and recipes.
+- 🔎 **Search & Filter** – Easily find your favorite juice by name or ingredients.
+- 💰 **Current Deals** – Display of latest discounts, coupons, and bundles.
+- ✅ **Why Choose Us Section** – Highlights like:
+  - 100% natural ingredients  
+  - Fast delivery  
+  - Customizable blends
+- 📜 **User Activity Logging** – All login events are stored in MongoDB and written to a local file for monitoring.
+- 🎨 **Modern UI** – Built with Tailwind CSS and React.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Frontend**
+- React
+- Tailwind CSS
+- React Router
+
+**Backend**
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
+- bcryptjs
+- JWT
+
+**Utilities**
+- Activity logs saved to MongoDB and local file system
+
+## 🧑‍💻 Setup Instructions
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/yourusername/juicedelight.git
+   cd juicedelight
