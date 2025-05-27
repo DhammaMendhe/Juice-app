@@ -1,7 +1,10 @@
 import React from "react";
+import OffersSection from "./OffersSection";
+import WhyChooseUs from "./WhyChooseUs";
 
 export default function Hero() {
   return (
+   <>
     <div className="flex flex-col-reverse sm:flex-row items-center bg-black text-white gap-10 px-6 py-10 sm:px-16 sm:py-20 mb-2 min-h-screen">
       
       {/* Information Section */}
@@ -30,6 +33,11 @@ export default function Hero() {
           alt="Juice Delight"
         />
       </div>
+     
     </div>
+
+    <OffersSection/>
+    <WhyChooseUs/>
+    </>
   );
 }
