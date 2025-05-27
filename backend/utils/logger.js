@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const logs = require('../schema/userLogs');
 // const path = require('../logs/)
 
 const logDir = path.join(__dirname, '../logs');
@@ -10,9 +11,19 @@ if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir, { recursive: true });
 }
 
-function logActivity(email, action, token = 'jgjhgjhjhjhjgjhgjgjgj9999') {
+async function logActivity(email, action, token = 'jgjhgjhjhjhjgjhgjgjgj9999') {
   const logLine = `${new Date().toISOString()} - ${email} - ${action}` + (token ? ` - Token: ${token}` : '') + '\n';
 //   console.log('Logging:', logLine);
+ try {
+    
+   let log = await logs.create({
+      info:logLine
+    });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("logs not save.....");
+  }
+
 
 
  fs.appendFile(logPath, logLine, (err) => {
@@ -20,5 +31,7 @@ function logActivity(email, action, token = 'jgjhgjhjhjhjgjhgjgjgj9999') {
       console.error('Failed to write log:', err);
     }
   });}
+
+ 
 
 module.exports = { logActivity };
