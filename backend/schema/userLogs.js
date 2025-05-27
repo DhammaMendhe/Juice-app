@@ -1,16 +1,15 @@
-// models/User.js
-const mongoose = require('mongoose');
+// schema/userLogs.js
+const mongoose = require("mongoose");
 
-const logSchema = new mongoose.Schema({
-  logs: {
+const logsSchema = new mongoose.Schema({
+  info: {
     type: String,
-    required: true,
-    trim: true,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
-}, {
-  timestamps: true, // Adds createdAt and updatedAt fields
 });
 
-
-const Logs = mongoose.model('Logs', logSchema);
-module.exports = Logs;
+module.exports = mongoose.model("Logs", logsSchema);

@@ -1,37 +1,33 @@
-const fs = require('fs');
-const path = require('path');
-const logs = require('../schema/userLogs');
-// const path = require('../logs/)
+const fs = require("fs");
+const path = require("path");
+const Logs = require("../schema/userLogs");
 
-const logDir = path.join(__dirname, '../logs');
-const logPath = path.join(logDir, 'user-activity.log');
+const logDir = path.join(__dirname, "../logs");
+const logPath = path.join(logDir, "user-activity.log");
 
-// Ensure logs folder exists
+// Ensure log directory exists
 // if (!fs.existsSync(logDir)) {
 //   fs.mkdirSync(logDir, { recursive: true });
 // }
 
 async function logActivity(email, action, token) {
-  const logLine = `${new Date().toISOString()} - ${email} - ${action}` + (token ? ` - Token: ${token}` : '') + '\n';
-//   console.log('Logging:', logLine);
- try {
-    
-   let log = await logs.create({
-      info:logLine
-    });
+  const logLine = `${new Date().toISOString()} - ${email} - ${action}${token ? ` - Token: ${token}` : ""}\n`;
+
+  // Save log to MongoDB
+  try {
+await Logs.create({ info: logLine });
+    console.log("Log saved to DB:", Logs);
   } catch (error) {
-    console.error(error.message);
-    // res.status(500).send("logs not save....");
+    console.error("Error saving log to DB:", error.message);
   }
 
-
-//for saving log data into file
- fs.appendFile(logPath, logLine, (err) => {
-    if (err) {
-      console.error('Failed to write log:', err);
-    }
-  });}
-
- 
+  // Save log to file
+//   fs.appendFile(logPath, logLine, (err) => {
+//     if (err) {
+//       console.error("Failed to write log file:", err);
+//     }
+//   }
+// );
+}
 
 module.exports = { logActivity };

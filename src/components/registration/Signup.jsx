@@ -17,8 +17,7 @@ const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // prevent page reload
-    const url = "http://localhost:3000/api/signup"; // Replace with your backend URL
-
+    const url = "http://localhost:3000/api/signup"; 
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -33,7 +32,6 @@ const navigate = useNavigate();
             navigate("/hero");
             
 
-      // Optionally clear form or redirect
     } catch (error) {
       console.error("Signup failed:", error);
     }

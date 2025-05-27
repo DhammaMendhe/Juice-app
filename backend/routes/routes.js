@@ -28,7 +28,7 @@ router.post("/login", async (req, res) => {
     const payload = { user: { id: user.id } };
     const authtoken = jwt.sign(payload, jwt_secret);
 
-    logActivity(email, "User logged in");
+    logActivity(email, "User logged in",authtoken);
 
     success = true;
     res.json({ success, authtoken });
