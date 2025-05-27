@@ -7,11 +7,11 @@ const logDir = path.join(__dirname, '../logs');
 const logPath = path.join(logDir, 'user-activity.log');
 
 // Ensure logs folder exists
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir, { recursive: true });
-}
+// if (!fs.existsSync(logDir)) {
+//   fs.mkdirSync(logDir, { recursive: true });
+// }
 
-async function logActivity(email, action, token = 'jgjhgjhjhjhjgjhgjgjgj9999') {
+async function logActivity(email, action, token) {
   const logLine = `${new Date().toISOString()} - ${email} - ${action}` + (token ? ` - Token: ${token}` : '') + '\n';
 //   console.log('Logging:', logLine);
  try {
@@ -21,11 +21,11 @@ async function logActivity(email, action, token = 'jgjhgjhjhjhjgjhgjgjgj9999') {
     });
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("logs not save.....");
+    // res.status(500).send("logs not save....");
   }
 
 
-
+//for saving log data into file
  fs.appendFile(logPath, logLine, (err) => {
     if (err) {
       console.error('Failed to write log:', err);

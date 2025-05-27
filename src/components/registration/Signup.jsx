@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -6,7 +7,7 @@ export default function Signup() {
     email: "",
     password: "",
   });
-
+const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -16,7 +17,7 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // prevent page reload
-    const url = "https://your-api-url.com/signup"; // Replace with your backend URL
+    const url = "http://localhost:3000/api/signup"; // Replace with your backend URL
 
     try {
       const response = await fetch(url, {
@@ -29,6 +30,9 @@ export default function Signup() {
 
       const data = await response.json();
       console.log("Signup successful:", data);
+            navigate("/hero");
+            
+
       // Optionally clear form or redirect
     } catch (error) {
       console.error("Signup failed:", error);
